@@ -76,7 +76,8 @@ public class BoundedStack<E> {
 
         // 5. checkRep();
         checkRep();
-    } 
+    }   
+
     /**
      * นำรถยนต์เข้าจอดไว้ที่ยอดบนสุด (Top) ของสแต็ก
      *
@@ -113,5 +114,70 @@ public class BoundedStack<E> {
         checkRep();
 
         return removedCar;
+    }
+
+    /**
+     * คืนค่าจำนวนรถยนต์ปัจจุบันที่อยู่ในสแต็ก
+     *
+     * @return จำนวนรถยนต์ในสแต็ก
+     */
+    public int size() {
+        return cars.size();
+    }
+
+    /**
+     * คืนค่าความจุสูงสุด (Capacity) ของสแต็กนี้
+     *
+     * @return ความจุสูงสุดของสแต็ก (MAX_CARS)
+     */
+    public int capacity() {
+        return MAX_CARS;
+    }
+
+    /**
+     * ตรวจสอบว่ามีรถยนต์ที่ระบุอยู่ในสแต็กหรือไม่
+     *
+     * @param car ออบเจกต์รถยนต์ที่ต้องการค้นหา
+     * @return true หากมีรถยนต์นี้อยู่ในสแต็ก, 
+     *         false หากไม่มีรถยนต์นี้อยู่ หรือถ้า car เป็น null
+     */
+    public boolean contains(E car) {
+        if (car == null) {
+            return false;
+        }
+        return cars.contains(car);
+    }
+
+    /**
+     * ดูรถยนต์คันที่อยู่บนสุด (Top) ของสแต็ก โดยไม่นำรถออกจากสแต็ก
+     *
+     * @return ออบเจกต์รถยนต์ที่อยู่บนสุด
+     * @throws NoSuchElementException ถ้าสแต็กว่างเปล่า
+     */
+    public E peek() {
+        if (cars.isEmpty()) {
+            throw new NoSuchElementException("stack is empty");
+        }
+        return cars.get(cars.size() - 1);
+    }
+    /**
+     * สร้างและคืนค่าสแต็กรถยนต์ใบใหม่ที่มีลำดับของรถยนต์กลับกันจากสแต็กปัจจุบัน
+     * โดยที่สแต็กเดิม (this) จะไม่ถูกเปลี่ยนแปลงข้อมูลใดๆ
+     *
+     * @return BoundedStack<E> ใบใหม่ที่มีองค์ประกอบกลับลำดับจากสแต็กเดิม
+     */
+    public BoundedStack<E> reversed() {
+        // 1. Copy ข้อมูลจาก this.cars ออกมาเป็น List ใหม่เพื่อไม่ให้กระทบของเดิม
+        List<E> reversedCars = new ArrayList<>(this.cars);
+        
+        // 2. กลับลำดับใน List ใหม่ที่เพิ่ง copy มา
+        Collections.reverse(reversedCars);
+        
+        // 3. สร้างและส่งคืน BoundedStack ใบใหม่ผ่าน Constructor ที่รับ List
+        return new BoundedStack<>(reversedCars);
+    }
+    @Override
+    public String toString() {
+        return cars.toString();
     }
 }
