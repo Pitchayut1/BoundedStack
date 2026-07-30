@@ -174,17 +174,3 @@ java -ea BoundedStackTest
 
 ---
 
-## ข้อผิดพลาดที่พบบ่อย
-
-- **เขียน AF เป็นการอธิบาย field** — AF ต้องบอกความหมายในโลกจริง ไม่ใช่บอกว่า `cars` คือตัวแปร List
-- **สับสน AF กับ RI** — AF ตอบ "หมายถึงอะไร" ส่วน RI ตอบ "ถูกกฎหรือไม่"
-- **เขียน `checkRep()` แล้วไม่เคยเรียก** — เขียนไว้สวยงามแต่ไม่เรียก เท่ากับไม่มีประโยชน์
-- **คัดลอกแค่ขาออก ลืมขาเข้า** — constructor ที่รับ `List` ก็ต้องทำ defensive copy เหมือนกัน
-- **ใช้ `assert` ตรวจ input ของ client** — ต้องใช้ exception เพราะ assert ถูกปิดตอนรันจริง
-- **ลืมใส่ `-ea` ตอนรัน** — `checkRep()` จะไม่ทำงาน เทสต์อาจผ่านทั้งที่โค้ดพัง
-
----
-
-## แหล่งอ้างอิง
-
-- MIT 6.031 Software Construction — Abstract Data Types, Abstraction Functions & Rep Invariants
