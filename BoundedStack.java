@@ -77,4 +77,41 @@ public class BoundedStack<E> {
         // 5. checkRep();
         checkRep();
     } 
+    /**
+     * นำรถยนต์เข้าจอดไว้ที่ยอดบนสุด (Top) ของสแต็ก
+     *
+     * @param car ออบเจกต์รถยนต์ที่ต้องการนำเข้าจอด ต้องไม่เป็น null
+     * @return true หากนำรถเข้าจอดสำเร็จ,
+     *         false หากสแต็กเต็ม (ครบความจุ MAX_CARS)
+     * @throws IllegalArgumentException ถ้า car เป็น null
+     */
+
+    public boolean push(E car) {
+        if (car == null) {
+            throw new IllegalArgumentException("car cannot be null");
+        }
+        if (cars.size() >= MAX_CARS) {
+            return false;
+        }
+        cars.add(car);
+        checkRep();
+        return true;
+    }
+
+    /**
+     * ดึงรถยนต์คันบนสุดออกจากสแต็ก (LIFO)
+     *
+     * @return รถยนต์คันบนสุด
+     * @throws NoSuchElementException ถ้าสแต็กว่าง 
+     */
+    public E pop() {
+        if (cars.isEmpty()) {
+            throw new NoSuchElementException("stack is empty");
+        }
+        E removedCar = cars.remove(cars.size() - 1);
+
+        checkRep();
+
+        return removedCar;
+    }
 }
