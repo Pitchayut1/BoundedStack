@@ -33,7 +33,6 @@ public class BoundedStack<E> {
         }
     }
 
-
    /**
     * สร้างสแต็กรถยนต์ว่าง โดยมีความจุสูงสุดเท่ากับ MAX_CARS (100 คัน)
     */
@@ -42,4 +41,40 @@ public class BoundedStack<E> {
     this.cars = new ArrayList<>();
     checkRep();
     }
+
+    
+    /**
+     * สร้างสแต็กรถยนต์ใหม่โดยนำข้อมูลมาจากรายการเริ่มต้น (initial list)
+     * โดยข้อมูลตำแหน่งแรก (index 0) จะกลายเป็นรถคันล่างสุดของสแต็ก
+     *
+     * @param initial รายการรถยนต์เริ่มต้น ห้ามเป็น null ห้ามมีขนาดเกิน MAX_CARS (100 คัน)
+     *                และสมาชิกภายในห้ามเป็น null
+     * @throws IllegalArgumentException ถ้า initial เป็น null, มีขนาดเกิน MAX_CARS, 
+     *                                  หรือมีสมาชิกข้างในตัวใดตัวหนึ่งเป็น null
+     */
+
+    public BoundedStack(List<E> initial) {
+        // 1. เช็ค initial == null → throw ก่อนเลย (ต้องเช็คก่อนแตะ .size() หรือ loop ใดๆ ไม่งั้นจะได้ NullPointerException แทน)
+        if (initial == null) {
+            throw new IllegalArgumentException("initial list cannot be null");
+        }
+
+        // 2. เช็ค initial.size() > MAX_CARS → throw
+        if (initial.size() > MAX_CARS) {
+            throw new IllegalArgumentException("initial list size exceeds MAX_CARS capacity");
+        }
+
+         // 3. เช็คว่ามี element เป็น null ปนอยู่ไหม → throw (ต้อง loop ดูทุกตัวใน initial)
+        for (E car : initial) {
+            if (car == null) {
+                throw new IllegalArgumentException("car element inside initial list cannot be null");
+            }
+        }
+
+        // 4. defensive copy — สร้าง list ใหม่คนละ object กับ initial แล้วเก็บใน this.cars
+            this.cars = new ArrayList<>(initial);
+
+        // 5. checkRep();
+        checkRep();
+    } 
 }
