@@ -84,7 +84,7 @@ public class BoundedStackTest {
     }
 
     // --- Partition 2: Push & LIFO Ordering ---
-    private static void testPushAndLIFO() {
+    private static void testPushAndLIFO() { //พิชญุตม์ เเสนสุข 6821601291
         System.out.println("\n-- Test Push & LIFO Order --");
 
         BoundedStack<String> stack = new BoundedStack<>();
@@ -101,7 +101,7 @@ public class BoundedStackTest {
     }
 
     // --- Partition 3: Pop & Peek ---
-    private static void testPopAndPeek() {
+    private static void testPopAndPeek() { //พิชญุตม์ เเสนสุข 6821601291
         System.out.println("\n-- Test Pop & Peek --");
 
         BoundedStack<String> stack = new BoundedStack<>(Arrays.asList("Toyota", "Honda", "BMW"));
