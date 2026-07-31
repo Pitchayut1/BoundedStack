@@ -23,7 +23,7 @@ public class BoundedStackTest {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //พิชญุตม์ เเสนสุข 6821601291
         // ตรวจสอบสถานะ Assertion ในการรัน
         boolean assertsEnabled = false;
         assert assertsEnabled = true;
@@ -52,7 +52,7 @@ public class BoundedStackTest {
     }
 
     // --- Partition 1: Constructors & Defensive Copy ---
-    private static void testConstructors() {
+    private static void testConstructors() { //พิชญุตม์ เเสนสุข 6821601291
         System.out.println("-- Test Constructors --");
 
         // Default Constructor

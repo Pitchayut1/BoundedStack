@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
  *   1. field cars ถูกประกาศเป็น final
  *   2. ไม่มี method ใดคืน reference ของ cars ออกไปโดยตรง
  */
-public class BoundedStack<E> {
+public class BoundedStack<E> { //กวีวัธน์ ช่างทุ่งใหญ่ 6821600902
 
     private final List<E> cars; 
     
@@ -53,7 +53,7 @@ public class BoundedStack<E> {
      *                                  หรือมีสมาชิกข้างในตัวใดตัวหนึ่งเป็น null
      */
 
-    public BoundedStack(List<E> initial) {
+    public BoundedStack(List<E> initial) { //กวีวัธน์ ช่างทุ่งใหญ่ 6821600902
         // 1. เช็ค initial == null → throw ก่อนเลย (ต้องเช็คก่อนแตะ .size() หรือ loop ใดๆ ไม่งั้นจะได้ NullPointerException แทน)
         if (initial == null) {
             throw new IllegalArgumentException("initial list cannot be null");
@@ -87,7 +87,7 @@ public class BoundedStack<E> {
      * @throws IllegalArgumentException ถ้า car เป็น null
      */
 
-    public boolean push(E car) {
+    public boolean push(E car) { //กวีวัธน์ ช่างทุ่งใหญ่ 6821600902
         if (car == null) {
             throw new IllegalArgumentException("car cannot be null");
         }
@@ -105,7 +105,7 @@ public class BoundedStack<E> {
      * @return รถยนต์คันบนสุด
      * @throws NoSuchElementException ถ้าสแต็กว่าง 
      */
-    public E pop() {
+    public E pop() { //กวีวัธน์ ช่างทุ่งใหญ่ 6821600902
         if (cars.isEmpty()) {
             throw new NoSuchElementException("stack is empty");
         }
@@ -166,7 +166,7 @@ public class BoundedStack<E> {
      *
      * @return BoundedStack<E> ใบใหม่ที่มีองค์ประกอบกลับลำดับจากสแต็กเดิม
      */
-    public BoundedStack<E> reversed() {
+    public BoundedStack<E> reversed() { //กวีวัธน์ ช่างทุ่งใหญ่ 6821600902
         // 1. Copy ข้อมูลจาก this.cars ออกมาเป็น List ใหม่เพื่อไม่ให้กระทบของเดิม
         List<E> reversedCars = new ArrayList<>(this.cars);
         
