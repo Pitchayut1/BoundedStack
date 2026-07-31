@@ -13,7 +13,7 @@ public class BoundedStackTest {
     private static int failed = 0;
 
     /** Helper สำหรับตรวจสอบเงื่อนไขและสะสมคะแนน PASS/FAIL */
-    private static void check(String testName, boolean condition) {
+    private static void check(String testName, boolean condition) { //พิชญุตม์ เเสนสุข 6821601291
         if (condition) {
             passed++;
             System.out.println("[PASS] " + testName);
